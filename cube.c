@@ -488,6 +488,8 @@ render_cube(struct vkcube *vc, struct vkcube_buffer *b)
 
    vkWaitForFences(vc->device, 1, (VkFence[]) { vc->fence }, true, INT64_MAX);
 
+   vkFreeCommandBuffers(vc->device, vc->cmd_pool, 1, &cmd_buffer);
+
    vkResetCommandPool(vc->device, vc->cmd_pool, 0);
 }
 
